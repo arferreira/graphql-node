@@ -13,9 +13,23 @@ type User {
   createdAt: DateTime 
 }
 
+input UserInput {
+  name: String
+  status: Boolean
+  email: String
+  role: RolesType
+  createdAt: DateTime
+}
+
 type Role {
   id: ID!
-  type: String!
+  type: RolesType!
+}
+
+enum RolesType {
+  ESTUDANTE
+  DOCENTE
+  COORDENACAO
 }
 
 type Query {
@@ -24,8 +38,8 @@ type Query {
 }
 
 type Mutation {
-  addUser(name: String!, email: String!, status: Boolean!, role: String!, createdAt: DateTime): User!
-  updateUser(id: ID!, name: String!, email: String!, status: Boolean!, role: String!): User!
+  addUser(user: UserInput): User!
+  updateUser(id: ID!, user: UserInput): User!
   deleteUser(id:ID!): ID!
 }
 
