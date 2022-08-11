@@ -20,6 +20,12 @@ type Query {
   user(id: ID!): User!
 }
 
+type Mutation {
+  addUser(name: String!, email: String!, status: Boolean!, role: String!): User!
+  updateUser(id: ID!, name: String!, email: String!, status: Boolean!, role: String!): User!
+  deleteUser(id:ID!): ID!
+}
+
 `;
 
 
